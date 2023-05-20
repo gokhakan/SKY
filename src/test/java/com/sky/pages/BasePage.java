@@ -15,4 +15,7 @@ public class BasePage {
     @FindBy(xpath = "//*[@id=\"notice\"]/div[3]/button[1]")
     public WebElement AcceptAll;
 
+    @FindBy (xpath = "//*[@id=\"masthead\"]/div[4]/a")
+    public WebElement SignIn;
+
 }
