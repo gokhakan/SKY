@@ -18,4 +18,13 @@ public class BasePage {
     @FindBy (xpath = "//*[@id=\"masthead\"]/div[4]/a")
     public WebElement SignIn;
 
+    @FindBy(xpath = "//button[@id='masthead-search-toggle']")
+    public WebElement searchButton;
+
+    @FindBy(xpath = "//input[@type='search']")
+    public WebElement searchBox;
+
+    @FindBy (id = "search-results-container")
+    public WebElement searchResultContainer;
+
 }

@@ -1,3 +1,4 @@
+@regression
 Feature: This feature will make sure that the shop page is navigable and usable.
 
   Scenario: User navigates to shop page
@@ -10,7 +11,6 @@ Feature: This feature will make sure that the shop page is navigable and usable.
     When I try to sign in with invalid credentials
     Then I should see a box with the text "Create your My Sky password"
 
-  @wip
   Scenario: User sees a list of deals on the deals page
     Given I am on the home page
     When I navigate to "Deals"
