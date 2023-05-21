@@ -1,6 +1,7 @@
 package com.sky.stepDefinitions;
 
 import com.sky.pages.BasePage;
+import com.sky.pages.DealsPage;
 import com.sky.pages.SignInPage;
 import com.sky.utilities.BrowserUtils;
 import com.sky.utilities.ConfigurationReader;
@@ -17,6 +18,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Steps {
     BasePage basePage = new BasePage();
     SignInPage signInPage = new SignInPage();
+    DealsPage dealsPage = new DealsPage();
     @Given("I am on the home page")
     public void i_am_on_the_home_page() {
         Driver.get().get(ConfigurationReader.get("url"));
@@ -30,6 +32,7 @@ public class Steps {
         Driver.get().switchTo().frame(2);
         Driver.get().findElement(By.xpath("//*[@id=\"notice\"]/div[3]/button[1]")).click();
 
+        BrowserUtils.waitForPageToLoad(100);
         basePage.Deals.click();
 
     }
@@ -78,5 +81,22 @@ public class Steps {
                 System.out.println("Fail: Title not matching");
         }
     }
+
+    @Then("I see a list of deals with a price to it")
+    public void i_see_a_list_of_deals_with_a_price_to_it() {
+        int numberOfDeals = dealsPage.Deals.size();
+        for (int i = 0; i < numberOfDeals; i++) {
+            String DealDetails = dealsPage.Deals.get(i).getText();
+            String PriceOfDeal = DealDetails.substring(DealDetails.indexOf("£"), DealDetails.indexOf("£")+3).trim();
+            int count = i+1;
+            String PriceOfTestDeal = "dealPrice"+ count;
+            System.out.println("PriceOfDeal = " + PriceOfDeal);
+            System.out.println("PriceOfTestDeal = " + PriceOfTestDeal);
+            Assert.assertEquals(ConfigurationReader.get(PriceOfTestDeal), PriceOfDeal);
+
+        }
+
+    }
+
 
 }
