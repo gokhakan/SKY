@@ -117,6 +117,6 @@ public class Steps {
 
     @Then("I should see an editorial section")
     public void i_should_see_an_editorial_section() {
-        Assert.assertTrue(basePage.searchResultContainer.isDisplayed());
+        Assert.assertTrue(basePage.editorialSection.isDisplayed());
     }
 }

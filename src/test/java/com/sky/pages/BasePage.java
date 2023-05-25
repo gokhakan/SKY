@@ -24,7 +24,7 @@ public class BasePage {
     @FindBy(xpath = "//input[@type='search']")
     public WebElement searchBox;
 
-    @FindBy (id = "search-results-container")
-    public WebElement searchResultContainer;
+    @FindBy(xpath = "//div[@data-test-id='editorial-section']")
+    public WebElement editorialSection;
 
 }
